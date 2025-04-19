@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Form Submission Result</title>
+    <title>HTML Form Demo</title>
 </head>
 <body>
 
