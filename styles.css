@@ -2,7 +2,7 @@
 
 body {
     font-family: "Funnel Display", sans-serif;
-    background: #f3f4f6;
+    background: linear-gradient(to right, #f8f9fa, rgb(222, 112, 112));
     padding: 40px;
     margin: 0px;
 }
