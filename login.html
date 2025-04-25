@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Form</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="js/validation.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -57,6 +58,15 @@
             font-size: 16px;
             cursor: pointer;
         }
+
+        .btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        .btn:disabled:hover {
+            background-color: #ccc;
+        }
+
         .btn:hover {
             background-color: #0056b3;
         }
@@ -88,36 +98,12 @@
                 <input type="password" id="password" name="password">
             </div>
             <p id="password-error" style="display: none;color:red">Please fill the fields</p>
-            <button type="submit" class="btn">Login</button>
+            <button type="submit" class="btn" disabled>Login</button>
             <!-- <button type="button" class="btn" onclick="return myFun()">My Button</button> -->
         </form>
         <div class="form-footer">
             <p>Don't have an account? <a href="/register">Sign up</a></p>
         </div>
     </div>
-
-    <script>
-        $().ready(function() {
-
-            $('form').submit(function(event) {
-                event.preventDefault(); // Prevent form submission
-            });
-
-            $("button").click(function() {
-                var usr = $("#username").val();
-                var pwd = $("#password").val();
-                if(usr.length == 0) {
-                    $("#username-error").show();
-                } else {
-                    $("#username-error").hide();
-                }
-                if(pwd.length == 0) {
-                    $("#password-error").show();
-                } else {
-                    $("#password-error").hide();
-                }
-            });
-        });
-    </script>
 </body>
 </html>
