@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Form</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -94,30 +95,28 @@
             <p>Don't have an account? <a href="/register">Sign up</a></p>
         </div>
     </div>
-    <script>
-        myFun = () => {
-            alert("Hello, this is a test function!");
-            var username = document.getElementById('username').value;
-            console.log(username);
-        }
-        // Optional JavaScript for form validation or other functionalities
-        document.querySelector('form').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent form submission for validation
-            // Perform validation here
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
 
-            if(username === '') {
-                document.getElementById('username-error').style.display = 'block';
-                document.getElementById('username-error').innerHTML = 'Username is required';
-            } else {
-                document.getElementById('username-error').style.display = 'none';
-            }
-            if(password === '') {
-                document.getElementById('password-error').style.display = 'block';
-            } else {
-                document.getElementById('password-error').style.display = 'none';   
-            }
+    <script>
+        $().ready(function() {
+
+            $('form').submit(function(event) {
+                event.preventDefault(); // Prevent form submission
+            });
+
+            $("button").click(function() {
+                var usr = $("#username").val();
+                var pwd = $("#password").val();
+                if(usr.length == 0) {
+                    $("#username-error").show();
+                } else {
+                    $("#username-error").hide();
+                }
+                if(pwd.length == 0) {
+                    $("#password-error").show();
+                } else {
+                    $("#password-error").hide();
+                }
+            });
         });
     </script>
 </body>
