@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +15,7 @@
             height: 100vh;
             margin: 0;
         }
+
         .login-container {
             background: #ffffff;
             padding: 20px 30px;
@@ -22,19 +24,23 @@
             width: 100%;
             max-width: 400px;
         }
+
         .login-container h2 {
             margin-bottom: 20px;
             color: #333;
             text-align: center;
         }
+
         .form-group {
             margin-bottom: 15px;
         }
+
         .form-group label {
             display: block;
             margin-bottom: 5px;
             color: #555;
         }
+
         .form-group input {
             width: 100%;
             padding: 10px;
@@ -42,10 +48,12 @@
             border-radius: 4px;
             font-size: 16px;
         }
+
         .form-group input:focus {
             border-color: #007bff;
             outline: none;
         }
+
         .btn {
             width: 100%;
             padding: 10px;
@@ -56,69 +64,64 @@
             font-size: 16px;
             cursor: pointer;
         }
+
         .btn:hover {
             background-color: #0056b3;
         }
+
         .form-footer {
             margin-top: 15px;
             text-align: center;
         }
+
         .form-footer a {
             color: #007bff;
             text-decoration: none;
         }
+
         .form-footer a:hover {
             text-decoration: underline;
         }
     </style>
 </head>
+
 <body>
     <div class="login-container">
         <h2>Login</h2>
         <form action="/login" method="POST">
             <div class="form-group">
                 <label for="username">Username</label>
-                <input type="text" id="username" name="username">
+                <input type="text" id="username" name="username" oninput="checkInputs()" required>
             </div>
             <p id="username-error" style="display: none;color:red">Please fill the fields</p>
             <br />
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" id="password" name="password">
+                <input type="password" id="password" name="password" oninput="checkInputs()" required>
             </div>
             <p id="password-error" style="display: none;color:red">Please fill the fields</p>
-            <button type="submit" class="btn">Login</button>
+            <button type="submit" class="bt" disabled id="loginButton">Login</button>
             <!-- <button type="button" class="btn" onclick="return myFun()">My Button</button> -->
         </form>
         <div class="form-footer">
             <p>Don't have an account? <a href="/register">Sign up</a></p>
         </div>
     </div>
-    <script>
-        myFun = () => {
-            alert("Hello, this is a test function!");
-            var username = document.getElementById('username').value;
-            console.log(username);
-        }
-        // Optional JavaScript for form validation or other functionalities
-        document.querySelector('form').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent form submission for validation
-            // Perform validation here
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
+    
 
-            if(username === '') {
-                document.getElementById('username-error').style.display = 'block';
-                document.getElementById('username-error').innerHTML = 'Username is required';
+    <script>
+        function checkInputs() {
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const loginButton = document.getElementById('loginButton');
+
+            if (username && password) {
+                loginButton.disabled = false;
             } else {
-                document.getElementById('username-error').style.display = 'none';
+                loginButton.disabled = true;
             }
-            if(password === '') {
-                document.getElementById('password-error').style.display = 'block';
-            } else {
-                document.getElementById('password-error').style.display = 'none';   
-            }
-        });
+        }
     </script>
 </body>
+
 </html>
