@@ -22,6 +22,8 @@
 </head>
 <body>
     <h1>Todo List</h1>
+    <input type="text" id="todo-input" placeholder="Enter a new todo item">
+    <button id="add-todo">Add</button>
     <ul id="todo-list">
         <!-- Todo items will be displayed here -->
         <li>Todo 1</li>
@@ -29,31 +31,31 @@
         <li>Todo 3</li>
         <li>Todo 4</li>
     </ul>
-    <button id="add-todo">Add Todo</button>
+    
     <script>
         // TODO: Add new todo item by taking user value from input field
         $(document).ready(function() {
-
+            // Clear existing todo items
+            $('#todo-list').empty();
+            // Add new todo item on button click
             $('#add-todo').click(function() {
-                $('#todo-list').append('<li>New Todo</li>');
+                $('#todo-list').append("<li>" + $('#todo-input').val() + "</li>");
             });
 
-            // $.get('https://jsonplaceholder.typicode.com/todos', function(data, error) {
-            //     // Assuming data is an array of todo items
-            //     console.log(data);
-            //     // data.forEach(function(todo) {
-            //     //     $('#todo-list').append('<li>' + todo.title + '</li>');
-            //     // });
-            // });
+            $.get('https://jsonplaceholder.typicode.com/todos', function(data) {
 
-            // Example of adding a new todo item
-            // $('#todo-list').append('<li>New TODO Added Dynamically</li>');
-            
-            // Example of removing a todo item
-            // $('#todo-list li').last().remove();
-            
-            // Example of updating a todo item
-            // $('#todo-list li').first().text('Updated Todo 1');
+                for (var i = 0; i < data.length; i++) {
+                    $('#todo-list').append('<li>' + data[i].id + " - " +  data[i].title + '</li>');
+                }
+
+                // data.forEach(function(todo) {
+                //     $('#todo-list').append('<li>' + todo.title + '</li>');
+                // });
+            });
+
+            $.get('https://jsonplaceholder.typicode.com/users', function(data) {
+                console.log(data);
+            });
         });
     </script>
 </body>
