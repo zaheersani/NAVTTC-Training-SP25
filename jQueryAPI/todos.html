@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Todo List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Todo List</h1>
+    <ul id="todo-list">
+        <!-- Todo items will be displayed here -->
+        <li>Todo 1</li>
+        <li>Todo 2</li>
+        <li>Todo 3</li>
+        <li>Todo 4</li>
+    </ul>
+    <button id="add-todo">Add Todo</button>
+    <script>
+        // TODO: Add new todo item by taking user value from input field
+        $(document).ready(function() {
+
+            $('#add-todo').click(function() {
+                $('#todo-list').append('<li>New Todo</li>');
+            });
+
+            // $.get('https://jsonplaceholder.typicode.com/todos', function(data, error) {
+            //     // Assuming data is an array of todo items
+            //     console.log(data);
+            //     // data.forEach(function(todo) {
+            //     //     $('#todo-list').append('<li>' + todo.title + '</li>');
+            //     // });
+            // });
+
+            // Example of adding a new todo item
+            // $('#todo-list').append('<li>New TODO Added Dynamically</li>');
+            
+            // Example of removing a todo item
+            // $('#todo-list li').last().remove();
+            
+            // Example of updating a todo item
+            // $('#todo-list li').first().text('Updated Todo 1');
+        });
+    </script>
+</body>
+</html>
